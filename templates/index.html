@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chronicle Connect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+  <h1>Chronicle Connect: Personalized Newsgroup Experience</h1>
+</header>
+
+{% if get_flashed_messages() %}
+<ul class="flash-messages">
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+  <li class="{{ category }}">{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<div class="container">
+
+  <div class="card">
+    <h2>User Registration</h2>
+    <form action="{{ url_for('register_user') }}" method="POST">
+      <label for="userName">Full Name</label>
+      <input type="text" id="userName" name="userName" required>
+
+      <label for="userEmail">Email</label>
+      <input type="email" id="userEmail" name="userEmail" required>
+
+      <label for="userPassword">Password</label>
+      <input type="password" id="userPassword" name="userPassword" required>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <!-- Writer Registration -->
+  <div class="card">
+    <h2>Writer Registration</h2>
+    <form action="{{ url_for('register_writer') }}" method="POST">
+      <label for="writerName">Full Name</label>
+      <input type="text" id="writerName" name="writerName" required>
+
+      <label for="writerEmail">Email</label>
+      <input type="email" id="writerEmail" name="writerEmail" required>
+
+      <label for="writerPassword">Password</label>
+      <input type="password" id="writerPassword" name="writerPassword" required>
+
+      <label for="newsGroup">News Group</label>
+      <select id="newsGroup" name="newsGroup" required>
+        {% for newsgroup in newsgroups %}
+        <option value="{{ newsgroup.NewsGroupID }}">{{ newsgroup.NewsGroupName }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit">Register as Writer</button>
+    </form>
+  </div>
+
+  <!-- Other sections are kept but forms are not functional yet -->
+  <!-- Subscription Management -->
+  <div class="card">
+    <h2>Manage Subscriptions</h2>
+    <form>
+      <label for="newsGroupSubscription">Subscribe to Group</label>
+      <select id="newsGroupSubscription">
+        {% for newsgroup in newsgroups %}
+        <option value="{{ newsgroup.NewsGroupID }}">{{ newsgroup.NewsGroupName }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit">Subscribe</button>
+
+      <label for="unsubscribeGroup">Unsubscribe from Group</label>
+      <select id="unsubscribeGroup">
+        {% for newsgroup in newsgroups %}
+        <option value="{{ newsgroup.NewsGroupID }}">{{ newsgroup.NewsGroupName }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit">Unsubscribe</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Write an Article</h2>
+    <form>
+      <label for="articleTitle">Title</label>
+      <input type="text" id="articleTitle" required>
+
+      <label for="articleGroup">News Group</label>
+      <select id="articleGroup">
+        {% for newsgroup in newsgroups %}
+        <option value="{{ newsgroup.NewsGroupID }}">{{ newsgroup.NewsGroupName }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="articleContent">Content</label>
+      <textarea id="articleContent" rows="6" required></textarea>
+
+      <button type="submit">Submit Article</button>
+    </form>
+  </div>
+
+
+  <div class="card">
+    <h2>Read Articles</h2>
+    <form>
+      <label for="searchKeyword">Search by Keyword</label>
+      <input type="text" id="searchKeyword">
+
+      <label for="searchAuthor">Search by Author</label>
+      <input type="text" id="searchAuthor">
+
+      <label for="searchDate">Search by Date</label>
+      <input type="date" id="searchDate">
+
+      <label for="articleList">Select an Article</label>
+      <select id="articleList">
+        <option>Article 1</option>
+        <option>Article 2</option>
+      </select>
+
+      <label for="rating">Rate the Article (1 to 5)</label>
+      <select id="rating">
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+      </select>
+
+      <button type="submit">Read Article</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Archived Articles</h2>
+    <form>
+      <label for="archiveSelect">Select Date</label>
+      <input type="date" id="archiveSelect" required>
+
+      <button type="submit">Retrieve Articles</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Mentor Assignment</h2>
+    <form>
+      <label for="mentor">Mentor (Writer ID)</label>
+      <input type="text" id="mentor" required>
+
+      <label for="mentee">Mentee (Writer ID)</label>
+      <input type="text" id="mentee" required>
+
+      <button type="submit">Assign Mentor</button>
+    </form>
+  </div>
+
+</div>
+
+</body>
+</html>

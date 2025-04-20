@@ -1,0 +1,117 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #613910, #ffffff);
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #343a40;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  .card {
+    background-color: rgba(255, 255, 255, 0.47);
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(101, 80, 80, 0.1);
+    padding: 25px;
+    flex: 1 1 400px;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  h2 {
+    color: #152a40;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+  input, select, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  button {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: #007bffbb;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0071b3;
+  }
+  
+  .flash-messages {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 1200px;
+  }
+  
+  .flash-messages .success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .flash-messages .error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  /* Optional: Section separators */
+  .divider {
+    height: 2px;
+    background-color: #ddd;
+    margin: 30px auto;
+    width: 80%;
+  }
